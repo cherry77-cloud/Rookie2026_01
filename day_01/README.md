@@ -73,3 +73,108 @@ std::vector<int> vec3(5, 10);         // 5 个值为 10 的元素
 std::vector<int> vec4(vec3);          // 拷贝构造
 std::vector<int> vec5(std::move(vec4)); // 移动构造
 ```
+
+---
+
+### 容量操作
+| 方法 | 描述 |
+|------|------|
+| `size()` | 返回 `vector` 中元素的数量。 |
+| `capacity()` | 返回 `vector` 当前分配的内存容量。 |
+| `empty()` | 检查 `vector` 是否为空。 |
+| `reserve(size_type new_cap)` | 预分配至少 `new_cap` 的内存。 |
+| `shrink_to_fit()` | 请求移除未使用的容量，减少内存占用。 |
+
+```c++
+std::vector<int> vec = {1, 2, 3};
+std::cout << vec.size();      // 输出 3
+std::cout << vec.capacity(); // 输出 3
+vec.reserve(10);             // 预分配 10 个元素的内存
+vec.shrink_to_fit();         // 尝试减少容量
+```
+
+---
+
+### 元素访问
+| 方法 | 描述 |
+|------|------|
+| `operator[](size_type pos)` | 返回下标为 `pos` 的元素的引用（无边界检查）。 |
+| `at(size_type pos)` | 返回下标为 `pos` 的元素的引用（有边界检查，越界抛出异常）。 |
+| `front()` | 返回第一个元素的引用。 |
+| `back()` | 返回最后一个元素的引用。 |
+| `data()` | 返回指向底层数组的指针。 |
+
+```c++
+std::vector<int> vec = {1, 2, 3};
+std::cout << vec[0];         // 输出 1
+std::cout << vec.at(1);      // 输出 2
+std::cout << vec.front();    // 输出 1
+std::cout << vec.back();     // 输出 3
+int* ptr = vec.data();       // 获取底层数组指针
+```
+
+---
+
+### 修改操作
+| 方法 | 描述 |
+|------|------|
+| `push_back(const T& value)` | 在末尾添加一个元素。 |
+| `emplace_back(Args&&... args)` | 在末尾直接构造一个元素。 |
+| `pop_back()` | 移除末尾的元素。 |
+| `insert(iterator pos, const T& value)` | 在 `pos` 位置插入一个元素。 |
+| `erase(iterator pos)` | 移除 `pos` 位置的元素。 |
+| `erase(iterator first, iterator last)` | 移除 `[first, last)` 范围内的元素。 |
+| `clear()` | 清空所有元素。 |
+| `resize(size_type count)` | 调整 `vector` 的大小为 `count`。 |
+| `swap(vector& other)` | 交换两个 `vector` 的内容。 |
+
+```c++
+std::vector<int> vec = {1, 2, 3};
+vec.push_back(4);                // {1, 2, 3, 4}
+vec.emplace_back(5);             // {1, 2, 3, 4, 5}
+vec.pop_back();                  // {1, 2, 3, 4}
+vec.insert(vec.begin() + 1, 10); // {1, 10, 2, 3, 4}
+vec.erase(vec.begin() + 2);      // {1, 10, 3, 4}
+vec.clear();                     // {}
+vec.resize(3);                   // {0, 0, 0}
+```
+
+---
+
+### 迭代器
+| 方法 | 描述 |
+|------|------|
+| `begin()` | 返回指向第一个元素的迭代器。 |
+| `end()` | 返回指向末尾（最后一个元素之后）的迭代器。 |
+| `cbegin()` | 返回指向第一个元素的常量迭代器。 |
+| `cend()` | 返回指向末尾的常量迭代器。 |
+| `rbegin()` | 返回指向第一个元素的反向迭代器。 |
+| `rend()` | 返回指向末尾的反向迭代器。 |
+
+```c++
+std::vector<int> vec = {1, 2, 3};
+for (auto it = vec.begin(); it != vec.end(); ++it) {
+    std::cout << *it << " "; // 输出 1 2 3
+}
+for (auto it = vec.rbegin(); it != vec.rend(); ++it) {
+    std::cout << *it << " "; // 输出 3 2 1
+}
+```
+
+---
+
+### 其他操作
+| 方法 | 描述 |
+|------|------|
+| `assign(size_type count, const T& value)` | 用 `count` 个 `value` 替换 `vector` 的内容。 |
+| `assign(InputIt first, InputIt last)` | 用 `[first, last)` 范围内的元素替换 `vector` 的内容。 |
+| `operator=` | 赋值操作符，支持拷贝赋值和移动赋值。 |
+| `get_allocator()` | 返回 `vector` 的内存分配器。 |
+
+```c++
+std::vector<int> vec;
+vec.assign(3, 10);           // {10, 10, 10}
+std::vector<int> vec2 = {1, 2, 3};
+vec = vec2;                  // 拷贝赋值
+vec = std::move(vec2);       // 移动赋值
+```
