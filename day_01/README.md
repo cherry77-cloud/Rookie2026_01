@@ -88,9 +88,9 @@ std::vector<int> vec5(std::move(vec4)); // 移动构造
 ```c++
 std::vector<int> vec = {1, 2, 3};
 std::cout << vec.size();      // 输出 3
-std::cout << vec.capacity(); // 输出 3
-vec.reserve(10);             // 预分配 10 个元素的内存
-vec.shrink_to_fit();         // 尝试减少容量
+std::cout << vec.capacity();  // 输出 3
+vec.reserve(10);              // 预分配 10 个元素的内存
+vec.shrink_to_fit();          // 尝试减少容量
 ```
 
 ---
