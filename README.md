@@ -1,1 +1,1 @@
-- [`day_01` Vector](https://github.com/cherry77-cloud/Rookie2026_01/tree/main/day_01) ✅
+- [day_01 Vector](https://github.com/cherry77-cloud/Rookie2026_01/tree/main/day_01) ✅
