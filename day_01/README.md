@@ -67,11 +67,11 @@
 | `~vector()` | 析构函数，释放 `vector` 的所有资源。 |
 
 ```c++
-std::vector<int> vec1;                // 空 vector
-std::vector<int> vec2(5);             // 5 个默认初始化的元素
-std::vector<int> vec3(5, 10);         // 5 个值为 10 的元素
-std::vector<int> vec4(vec3);          // 拷贝构造
-std::vector<int> vec5(std::move(vec4)); // 移动构造
+std::vector<int> vec1;                   // 空 vector
+std::vector<int> vec2(5);                // 5 个默认初始化的元素
+std::vector<int> vec3(5, 10);            // 5 个值为 10 的元素
+std::vector<int> vec4(vec3);             // 拷贝构造
+std::vector<int> vec5(std::move(vec4));  // 移动构造
 ```
 
 ---
