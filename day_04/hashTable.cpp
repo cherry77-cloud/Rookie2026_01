@@ -49,9 +49,7 @@ private:
   
     float maxLoadFactor = 0.75;
   
-    size_t hash(const Key &key) const {
-        return hashFunction(key) % tableSize;
-    }
+    size_t hash(const Key &key) const { return hashFunction(key) % tableSize; }
   
     void rehash(size_t newSize) {
         std::vector<Bucket> newBuckets(newSize);
