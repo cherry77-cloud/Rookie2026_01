@@ -11,12 +11,14 @@
 ## 二. `std::vector::push_back` 和 `std::vector::emplace_back` 的区别
 两者都用于在 `std::vector` 的末尾添加新元素，但它们的实现方式不同：
 
-`push_back：`
+`push_back`
 - 对给定的对象进行拷贝或移动构造。
 - 需要先构造对象，再将其拷贝或移动到 `vector` 中。
 - 适用于已有对象的情况。
 
-`emplace_back：`
+`emplace_back`
 - 直接在 `vector` 的末尾构造新元素，无需拷贝或移动操作。
 - 通过传递构造参数，直接在容器内部构造对象。
 - 更高效，尤其是对于复杂对象。
+
+---
