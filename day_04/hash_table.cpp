@@ -79,9 +79,7 @@ public:
         }
     }
   
-    void insertKey(const Key &key) {
-        insert(key, Value{});
-    }
+    void insertKey(const Key &key) { insert(key, Value{}); }
   
     void erase(const Key &key) {
         size_t index = hash(key);
