@@ -53,3 +53,23 @@
   - 避免在遍历时直接修改 `vector`。
 
 ---
+
+## 六. 常用接口
+
+### 构造与析构
+| 方法 | 描述 |
+|------|------|
+| `vector()` | 默认构造函数，创建一个空的 `vector`。 |
+| `vector(size_type count)` | 创建一个包含 `count` 个默认初始化元素的 `vector`。 |
+| `vector(size_type count, const T& value)` | 创建一个包含 `count` 个值为 `value` 的元素的 `vector`。 |
+| `vector(const vector& other)` | 拷贝构造函数，创建一个与 `other` 相同的 `vector`。 |
+| `vector(vector&& other)` | 移动构造函数，将 `other` 的资源移动到新 `vector`。 |
+| `~vector()` | 析构函数，释放 `vector` 的所有资源。 |
+
+```c++
+std::vector<int> vec1;                // 空 vector
+std::vector<int> vec2(5);             // 5 个默认初始化的元素
+std::vector<int> vec3(5, 10);         // 5 个值为 10 的元素
+std::vector<int> vec4(vec3);          // 拷贝构造
+std::vector<int> vec5(std::move(vec4)); // 移动构造
+```
