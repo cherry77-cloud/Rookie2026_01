@@ -53,10 +53,6 @@ public:
         ++size;
     }
 
-    size_t getSize() const {
-        return size;
-    }
-
     T &operator[](size_t index) {
         Node *current = head.get();
         for (size_t i = 0; i < index; ++i) {
@@ -135,10 +131,6 @@ public:
         --size;
     }
 
-    bool empty() const {
-        return size == 0;
-    }
-
     void clear() {
         while (head) {
             head = std::move(head->next);
@@ -147,12 +139,8 @@ public:
         size = 0;
     }
 
-    void printElements() const {
-        for (Node *current = head.get(); current; current = current->next.get()) {
-            std::cout << current->data << " ";
-        }
-        std::cout << std::endl;
-    }
+    bool empty() const { return size == 0; }
+    size_t getSize() const { return size; }
 };
 
 template <typename T>
